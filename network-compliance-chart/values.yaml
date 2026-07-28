@@ -1,0 +1,16 @@
+image:
+  repository: tronghvan/network-compliance
+  tag: "v0.1"
+  pullPolicy: IfNotPresent
+
+schedule: "*/15 * * * *"
+
+resources:
+  requests:
+    cpu: "50m"
+    memory: "100Mi"
+  limits:
+    cpu: "200m"
+    memory: "200Mi"
+
+restartPolicy: OnFailure

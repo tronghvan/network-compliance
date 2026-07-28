@@ -1,0 +1,11 @@
+rules:
+  - name: "Requires logging to SIEM server"
+    check: "remote-server 10.0.0.100"
+    security: critical
+  - name: "Interface e1-1 must be enabled"
+    check: "admin-state enable"
+    security: warning
+  - name: "Network instance default must be declared"
+    check: "network-instance default"
+    security: critical
+

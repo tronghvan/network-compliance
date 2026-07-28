@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: network-compliance-check
+spec:
+  schedule: "*/15 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: compliance-check
+              image: tronghvan/network-compliance:v0.1
+              resources:
+                requests:
+                  cpu: "50m"
+                  memory: "100Mi"
+                limits:
+                  cpu: "200m"
+                  memory: "200Mi"
+          restartPolicy: OnFailure
+

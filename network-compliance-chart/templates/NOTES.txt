@@ -1,0 +1,2 @@
+Network Compliance CronJob da duoc cai dat thanh cong.
+Kiem tra bang lenh: kubectl get cronjobs

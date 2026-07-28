@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "network-compliance-chart.fullname" . }}
+  labels:
+    {{- include "network-compliance-chart.labels" . | nindent 4 }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            {{- include "network-compliance-chart.labels" . | nindent 12 }}
+        spec:
+          containers:
+            - name: compliance-check
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              {{- with .Values.resources }}
+              resources:
+                {{- toYaml . | nindent 16 }}
+              {{- end }}
+          restartPolicy: {{ .Values.restartPolicy }}

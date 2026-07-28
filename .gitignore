@@ -1,0 +1,6 @@
+venv/
+containerlab/
+.pytest_cache/
+__pycache__/
+*.pyc
+configs_actual_*.txt

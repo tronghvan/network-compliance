@@ -1,0 +1,12 @@
+-  name: fix bug logging on devices SR Linux
+   hosts: srlinux_devices
+   gather_facts: no
+   tasks:
+    -  name: add config logging
+       nokia.srlinux.config:
+         update:
+           -  path: /system/logging/remote-server[host=10.0.0.100]
+              value:
+                network-instance: default
+                remote-port: 514
+         save_when: always
