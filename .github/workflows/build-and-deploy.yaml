@@ -29,17 +29,13 @@ jobs:
     needs: build-and-push
     runs-on: self-hosted
     steps:
-      - name: Debug - xem cau truc thu muc that
-        run: |
-          echo "Dang dung o thu muc:"
-          pwd
-          echo "Noi dung thu muc hien tai:"
-          ls -la
-          echo "Tim file Chart.yaml o dau:"
-          find / -name "Chart.yaml" 2>/dev/null
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Helm upgrade to new image
         run: |
+          pwd
+          ls -la
           helm upgrade compliance-dev ./network-compliance-chart \
             --set image.tag=latest \
             --reuse-values
