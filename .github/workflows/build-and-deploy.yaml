@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Helm upgrade to new image
         run: |
-          helm upgrade compliance-dev ./network-compliance-chart \
+          helm upgrade compliance-dev ./stage-one/network-compliance-chart \
             --set image.tag=latest \
             --reuse-values
           kubectl rollout status cronjob/compliance-dev-network-compliance-chart 2>/dev/null || echo "CronJob khong ho tro rollout status, kiem tra thu cong"
