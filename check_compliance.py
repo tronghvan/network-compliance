@@ -18,7 +18,7 @@ def check_device_compliance(device_name, config_text, rules):
             violations.append({
                 "device": device_name,
                 "rule": rule["name"],
-                "security": rule["security"]
+                "severity": rule["severity"]
             })
     return violations
 

@@ -1,0 +1,11 @@
+rules:
+  - name: "Remote server logging phai tro dung dia chi SIEM"
+    path_contains: "remote-server"
+    expected_value_contains: "10.0.0.100"
+    severity: critical
+
+  - name: "Remote server logging port phai la 514"
+    path_contains: "remote-server"
+    expected_field: "remote-port"
+    expected_value: 514
+    severity: warning
