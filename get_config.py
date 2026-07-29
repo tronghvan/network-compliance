@@ -36,7 +36,7 @@ def process_result(device, config):
 
 def main():
     devices = load_inventory()
-    max_workers = 30   # bắt đầu bằng đúng số thiết bị hiện có
+    max_workers = 20   #start
 
     start_time = time.time()
 
