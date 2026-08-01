@@ -4,3 +4,7 @@ containerlab/
 __pycache__/
 *.pyc
 configs_actual_*.txt
+__pycache__/
+venv/
+containerlab/clab-net-compliance/
+outputs/

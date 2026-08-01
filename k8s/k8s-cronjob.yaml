@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
             - name: compliance-check
-              image: tronghvan/network-compliance:v0.1
+              image: tronghvan/network-compliance:v0.2
               resources:
                 requests:
                   cpu: "50m"

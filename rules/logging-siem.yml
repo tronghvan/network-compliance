@@ -1,0 +1,20 @@
+metadata:
+  rule_id: "SEC-001"
+  name: "Remote server logging phai tro dung dia chi SIEM"
+  created_by: "security-team"
+  created_at: "2026-07-28"
+  last_modified: "2026-07-30"
+  applies_to:
+    device_group: "core-routers"
+  version: 2
+
+check:
+  mode: ["polling", "event"]
+  polling:
+    check_string: "remote-server 10.0.0.100"
+  event:
+    path_contains: "remote-server"
+    expected_value_contains: "10.0.0.100"
+
+severity: critical
+auto_remediate: true

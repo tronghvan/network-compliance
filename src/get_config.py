@@ -2,9 +2,13 @@
 import yaml
 import time
 from netmiko import ConnectHandler
+from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-def load_inventory(path="inventory.yml"):
+BASE_DIR = Path(__file__).resolve().parent.parent
+DEFAULT_INVENTORY = BASE_DIR / "inventory" / "inventory.yml"
+OUTPUT_DIR = BASE_DIR / "outputs"
+def load_inventory(path=DEFAULT_INVENTORY):
     with open(path, "r") as f:
         data = yaml.safe_load(f)
     return data["devices"]
@@ -27,7 +31,7 @@ def get_running_config(device):
 
 def process_result(device, config):
     if config:
-        filename = f"configs_actual_{device['name']}.txt"
+        filename = OUTPUT_DIR / f"configs_actual_{device['name']}.txt"
         with open(filename, "w") as f:
             f.write(config)
         print(f"Saved in {filename}")
@@ -47,7 +51,7 @@ def main():
             process_result(device, config)
 
     elapsed = time.time() - start_time
-    print(f"\nTong thoi gian xu ly: {elapsed:.2f} giay voi {max_workers} workers")
+    print(f"\nTotal processing time: {elapsed:.2f} second with {max_workers} workers")
 
 if __name__ == "__main__":
     main()
